@@ -428,6 +428,9 @@ public class Termitas extends PApplet {
             // ##### IMPLEMENTACION #####
             // Hint: Indicar en el mundo que hay una astilla, indicar a la termita que está cargando una astilla y mover a la termita
             //    en la dirección opuesta a la que está mirando (variable 'dir')
+            this.mundo[t.posY][t.posX].estado = true;
+            t.cargando = false;
+            this.moverTermita(t, (dir + 4) % 8);
         }
 
         /**
