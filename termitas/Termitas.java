@@ -326,8 +326,8 @@ public class Termitas extends PApplet {
             // ##### IMPLEMENTACION #####
             // Hint: El parametro direccion solo puede ser un valor entre 0-7.
             // Hint: mundo[t.posY][t.posX].estado Nos indica si hay una astilla en la misma posicion que la termita. 
-            Celda celda = celdaEnDireccion(t, dir);
-            return mundo[celda.celdaY][celda.celdaX].estado;
+            Celda celda = this.celdaEnDireccion(t, dir);
+            return this.mundo[celda.celdaY][celda.celdaX].estado;
         }
 
         /**
@@ -438,9 +438,9 @@ public class Termitas extends PApplet {
         void dejarAstilla(Termita t) {
             // ##### IMPLEMENTACION ######
             // Hint: Marcar casilla para indicar la astilla, indicar que la termita carga una astilla y moverTermita aleatoriamente.
-            mundo[t.posY][t.posX].estado = true;
+            this.mundo[t.posY][t.posX].estado = true;
             t.cargando = false;
-            moverTermita(t, rnd.nextInt(8));
+            this.moverTermita(t, rnd.nextInt(8));
         }
 
         /**
@@ -466,6 +466,9 @@ public class Termitas extends PApplet {
         void tomarAstilla(Termita t, int dir) {
             // ##### IMPLEMENTACION #####
             // Hint: Mover a la termita, quitar la astilla del mundo e indicar que la termita carga la astilla.
+            this.moverTermita(t, dir);
+            this.mundo[t.posY][t.posX].estado = false;
+            t.cargando = true;
         }
 
         /**
