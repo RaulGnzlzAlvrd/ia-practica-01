@@ -438,6 +438,9 @@ public class Termitas extends PApplet {
         void dejarAstilla(Termita t) {
             // ##### IMPLEMENTACION ######
             // Hint: Marcar casilla para indicar la astilla, indicar que la termita carga una astilla y moverTermita aleatoriamente.
+            mundo[t.posY][t.posX].estado = true;
+            t.cargando = false;
+            moverTermita(t, rnd.nextInt(8));
         }
 
         /**
