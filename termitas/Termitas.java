@@ -340,7 +340,7 @@ public class Termitas extends PApplet {
          * @return Celda con las coordenas xy que se busca.
          */
         Celda celdaEnDireccion(Termita t, int dir) {
-            Celda celda = new Celda();
+            Celda celda = new Celda(-1, -1, false);
             switch (dir) {
                 case 0:
                     celda.celdaX = (t.posX - 1) % ancho;
@@ -351,14 +351,12 @@ public class Termitas extends PApplet {
                     if (celda.celdaY < 0) {
                         celda.celdaY += alto;
                     }
-                    celda.estado = false;
                     break;
                 case 1:
                     celda.celdaY = (t.posY - 1) % alto;
                     if (celda.celdaY < 0) {
                         celda.celdaY += alto;
                     }
-                    celda.estado = false;
                     break;
                 case 2:
                     celda.celdaX = (t.posX + 1) % ancho;
@@ -369,14 +367,12 @@ public class Termitas extends PApplet {
                     if (celda.celdaY < 0) {
                         celda.celdaY += alto;
                     }
-                    celda.estado = false;
                     break;
                 case 3:
                     celda.celdaX = (t.posX + 1) % ancho;
                     if (celda.celdaX < 0) {
                         celda.celdaX += ancho;
                     }
-                    celda.estado = false;
                     break;
                 case 4:
                     celda.celdaX = (t.posX + 1) % ancho;
@@ -387,14 +383,12 @@ public class Termitas extends PApplet {
                     if (celda.celdaY < 0) {
                         celda.celdaY += alto;
                     }
-                    celda.estado = false;
                     break;
                 case 5:
                     celda.celdaY = (t.posY + 1) % alto;
                     if (celda.celdaY < 0) {
                         celda.celdaY += alto;
                     }
-                    celda.estado = false;
                     break;
                 case 6:
                     celda.celdaX = (t.posX - 1) % ancho;
@@ -405,14 +399,12 @@ public class Termitas extends PApplet {
                     if (celda.celdaY < 0) {
                         celda.celdaY += alto;
                     }
-                    celda.estado = false;
                     break;
                 case 7:
                     celda.celdaX = (t.posX - 1) % ancho;
                     if (celda.celdaX < 0) {
                         celda.celdaX += ancho;
                     }
-                    celda.estado = false;
                     break;
             }
             return celda;
