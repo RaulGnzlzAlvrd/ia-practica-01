@@ -324,9 +324,10 @@ public class Termitas extends PApplet {
          */
         boolean hayAstilla(Termita t, int dir) {
             // ##### IMPLEMENTACION #####
-            return false;
             // Hint: El parametro direccion solo puede ser un valor entre 0-7.
             // Hint: mundo[t.posY][t.posX].estado Nos indica si hay una astilla en la misma posicion que la termita. 
+            Celda celda = celdaEnDireccion(t, dir);
+            return mundo[celda.celdaY][celda.celdaX].estado;
         }
 
         /**
