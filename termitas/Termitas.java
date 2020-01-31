@@ -22,8 +22,8 @@ public class Termitas extends PApplet {
     int alto = 100;         // Altura (en celdas) de la cuadricula.
     int ancho = 150;        // Anchura (en celdas) de la cuadricula.
     int celda = 4;          // Tamanio de cada celda cuadrada (en pixeles).
-    int termitas = 200;      // Cantidad de termitas dentro del modelo.
-    float densidad = 0.0f;   // Proporcion de astilla en el modelo (con probabilidad de 0 a 1).
+    int termitas = 140;      // Cantidad de termitas dentro del modelo.
+    float densidad = 0.2f;   // Proporcion de astilla en el modelo (con probabilidad de 0 a 1).
     ModeloTermitas modelo;  // El objeto que representa el modelo de termitas.
 
     /**
@@ -36,8 +36,8 @@ public class Termitas extends PApplet {
         modelo = new ModeloTermitas(ancho, alto, celda, termitas, densidad);
 
         // Preprocesamiento
-        //for(int i = 0; i < 5000; i++)
-        //modelo.evolucion2();
+        for(int i = 0; i < 5000; i++)
+        modelo.evolucion1();
     }
 
     /**
@@ -340,7 +340,7 @@ public class Termitas extends PApplet {
          * @return Celda con las coordenas xy que se busca.
          */
         Celda celdaEnDireccion(Termita t, int dir) {
-            Celda celda = new Celda(-1, -1, false);
+            Celda celda = new Celda(t.posX, t.posY, false);
             switch (dir) {
                 case 0:
                     celda.celdaX = (t.posX - 1) % ancho;
