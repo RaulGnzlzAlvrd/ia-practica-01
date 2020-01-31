@@ -308,7 +308,9 @@ public class Termitas extends PApplet {
             // termita está mirando hacia la derecha por lo que puede caminar
             // aleatoriamente hacia los valores 2, 3 ó 4 (representando
             // izquierda, adelante y derecha).
-            return rnd.nextInt(8);
+            int nuevaDireccion = ((direccion - 1) + rnd.nextInt(3));
+            nuevaDireccion = (nuevaDireccion > 7) ? nuevaDireccion % 8 : (nuevaDireccion < 0) ? nuevaDireccion + 8  : nuevaDireccion; 
+            return nuevaDireccion;
         }
 
         /**
