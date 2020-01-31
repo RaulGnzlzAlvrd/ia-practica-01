@@ -330,6 +330,94 @@ public class Termitas extends PApplet {
         }
 
         /**
+         * Regresa una celda genérica (no es una celda del mundo del modelo) con las coordenadas xy 
+         * de la celda que está en direccion dir de la termita t.
+         *
+         * @param t La termita de la que se quiere saber la celda que está en la dirección dada.
+         * @param dir La dirección en la que está la celda de la que se quieren saber sus coordenadas.
+         *
+         * @return Celda con las coordenas xy que se busca.
+         */
+        Celda celdaEnDireccion(Termita t, int dir) {
+            Celda celda = new Celda();
+            switch (dir) {
+                case 0:
+                    celda.celdaX = (t.posX - 1) % ancho;
+                    if (celda.celdaX < 0) {
+                        celda.celdaX += ancho;
+                    }
+                    celda.celdaY = (t.posY - 1) % alto;
+                    if (celda.celdaY < 0) {
+                        celda.celdaY += alto;
+                    }
+                    celda.estado = false;
+                    break;
+                case 1:
+                    celda.celdaY = (t.posY - 1) % alto;
+                    if (celda.celdaY < 0) {
+                        celda.celdaY += alto;
+                    }
+                    celda.estado = false;
+                    break;
+                case 2:
+                    celda.celdaX = (t.posX + 1) % ancho;
+                    if (celda.celdaX < 0) {
+                        celda.celdaX += ancho;
+                    }
+                    celda.celdaY = (t.posY - 1) % alto;
+                    if (celda.celdaY < 0) {
+                        celda.celdaY += alto;
+                    }
+                    celda.estado = false;
+                    break;
+                case 3:
+                    celda.celdaX = (t.posX + 1) % ancho;
+                    if (celda.celdaX < 0) {
+                        celda.celdaX += ancho;
+                    }
+                    celda.estado = false;
+                    break;
+                case 4:
+                    celda.celdaX = (t.posX + 1) % ancho;
+                    if (celda.celdaX < 0) {
+                        celda.celdaX += ancho;
+                    }
+                    celda.celdaY = (t.posY + 1) % alto;
+                    if (celda.celdaY < 0) {
+                        celda.celdaY += alto;
+                    }
+                    celda.estado = false;
+                    break;
+                case 5:
+                    celda.celdaY = (t.posY + 1) % alto;
+                    if (celda.celdaY < 0) {
+                        celda.celdaY += alto;
+                    }
+                    celda.estado = false;
+                    break;
+                case 6:
+                    celda.celdaX = (t.posX - 1) % ancho;
+                    if (celda.celdaX < 0) {
+                        celda.celdaX += ancho;
+                    }
+                    celda.celdaY = (t.posY + 1) % alto;
+                    if (celda.celdaY < 0) {
+                        celda.celdaY += alto;
+                    }
+                    celda.estado = false;
+                    break;
+                case 7:
+                    celda.celdaX = (t.posX - 1) % ancho;
+                    if (celda.celdaX < 0) {
+                        celda.celdaX += ancho;
+                    }
+                    celda.estado = false;
+                    break;
+            }
+            return celda;
+        }
+
+        /**
          * Simula el comportamiento de soltar una astilla y mover a la hormiga
          * en la dirección dada.
          *
