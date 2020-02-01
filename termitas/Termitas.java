@@ -23,7 +23,7 @@ public class Termitas extends PApplet {
     int ancho = 150;        // Anchura (en celdas) de la cuadricula.
     int celda = 4;          // Tamanio de cada celda cuadrada (en pixeles).
     int termitas = 140;      // Cantidad de termitas dentro del modelo.
-    float densidad = 0.2f;   // Proporcion de astilla en el modelo (con probabilidad de 0 a 1).
+    float densidad = 0.4f;   // Proporcion de astilla en el modelo (con probabilidad de 0 a 1).
     ModeloTermitas modelo;  // El objeto que representa el modelo de termitas.
 
     /**
@@ -36,8 +36,8 @@ public class Termitas extends PApplet {
         modelo = new ModeloTermitas(ancho, alto, celda, termitas, densidad);
 
         // Preprocesamiento
-        for(int i = 0; i < 5000; i++)
-        modelo.evolucion1();
+        for(int i = 0; i < 30000; i++)
+           modelo.evolucion3();
     }
 
     /**
@@ -89,8 +89,6 @@ public class Termitas extends PApplet {
         text("Proporcion de astillas: " + densidad, 128, (alto * celda) + 24);
 
         // Actualizar el modelo a la siguiente generacion.
-        //modelo.evolucion1();
-        //modelo.evolucion2();
         //modelo.evolucion3();
     }
 
@@ -459,6 +457,21 @@ public class Termitas extends PApplet {
         void dejarAstillaConSalto(Termita t) {
             // ##### IMPLEMENTACION #####
             // Hint: MArcar casilla con astilla, indicar que la termina ya no carga una astilla y asignar una nueva posicion a la termita.
+            this.mundo[t.posY][t.posX].estado = true;
+            t.cargando = false;
+            Celda celdaVacia = this.obtenCasillaVacia();
+            t.posX = celdaVacia.celdaX;
+            t.posY = celdaVacia.celdaY;
+            t.direccion = rnd.nextInt(8);
+        }
+
+        Celda obtenCasillaVacia() {
+            int x, y;
+            do {
+                x = rnd.nextInt(ancho);
+                y = rnd.nextInt(alto);
+            } while (mundo[y][x].estado == true);
+            return new Celda(x, y, false);
         }
 
         /**
